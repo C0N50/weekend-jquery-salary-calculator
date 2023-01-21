@@ -1,6 +1,7 @@
 html, body {
     margin: 0;
     height: 100%;
+    
 }
 
 header {
@@ -10,6 +11,25 @@ header {
     background-color: grey;
     padding-top: .5em;
     padding-bottom: .25em;
+
+}
+
+h1 {
+    font-family:'Times New Roman', Times, serif;
+    font-weight: lighter;
+}
+
+h2 {
+    font-family:'Times New Roman', Times, serif;
+    font-weight: lighter;
+}
+
+.input-styles {
+    padding-bottom: 1em;
+}
+
+.button-style {
+    padding-left: 43.35em;
 }
 
 table {
