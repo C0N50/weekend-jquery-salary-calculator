@@ -17,10 +17,10 @@ render();
 
 //initialize global variables
 let employees = [ 
-    { firstName : 'Samuel', lastName : 'Malone' , id : 0001, title : 'Owner/Bartender', annualSalary : '$90,000'},
-    { firstName : 'Diane', lastName : 'Chambers', id : 0124, title : 'Server', annualSalary : '$44,600' },
-    { firstName : 'Ernie', lastName : 'Pantusso', id : 0013, title : 'Assistant bartender', annualSalary : '$51,000' },
-    { firstName : 'Carla', lastName : 'Tortelli', id : 0018, title : 'Server', annualSalary : '$46,800' }
+    { firstName : 'Samuel', lastName : 'Malone' , id : 1, title : 'Owner/Bartender', annualSalary : '$90,000'},
+    { firstName : 'Diane', lastName : 'Chambers', id : 124, title : 'Server', annualSalary : '$44,600' },
+    { firstName : 'Ernie', lastName : 'Pantusso', id : 13, title : 'Assistant bartender', annualSalary : '$51,000' },
+    { firstName : 'Carla', lastName : 'Tortelli', id : 18, title : 'Server', annualSalary : '$46,800' }
 ];
 
 
