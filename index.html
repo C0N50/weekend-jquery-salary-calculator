@@ -10,7 +10,47 @@
     
     <title>Salary Calculator</title>
 </head>
-<body>
+
+<header>    
     <h1>Salary Calculator</h1>
+</header>
+
+
+<body>
+    <h1>Add Employee</h1>
+    <form id="addEmployee">
+
+    <div>
+        <input id='firstNameInput' type="text" placeholder= "First Name">
+        <input id='lastNameInput' type="text" placeholder= "Last Name">
+        <input id='idInput' type="text" placeholder= "ID">
+        <input id='titleInput' type="text" placeholder= "Title">
+        <input id='salaryInput' type="text" placeholder= "Annual Salary">
+    </div>
+
+    <div>
+        <button>Submit</button>
+    </div>
+</form>
+
+<h1>Employees</h1>
+
+    <table> 
+        <thead>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>ID</td>
+                <td>Title</td>
+                <td>Annual Salary</td>
+            </tr>
+        </thead>
+        <tbody id="employee-table">
+            <!-- Data Goes Here 🐈🐈🐈-->
+        </tbody>
+    </table>
+
+
+
 </body>
 </html>
