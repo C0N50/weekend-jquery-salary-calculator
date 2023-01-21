@@ -21,9 +21,8 @@ let employees = [
     { firstName : 'Diane', lastName : 'Chambers', id : 0124, title : 'Server', annualSalary : '$44,600' },
     { firstName : 'Ernie', lastName : 'Pantusso', id : 0013, title : 'Assistant bartender', annualSalary : '$51,000' },
     { firstName : 'Carla', lastName : 'Tortelli', id : 0018, title : 'Server', annualSalary : '$46,800' }
-
 ];
-console.log('Employees', employees)
+
 
 //creates new employee object and adds it to the end of the array
 function addEmployee() {
@@ -40,9 +39,9 @@ function addEmployee() {
 }
 
 
-function deleteEmployee() {
+/*function deleteEmployee() {
 
-}
+} */
 
 function render() {
 
