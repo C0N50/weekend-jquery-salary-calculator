@@ -10,7 +10,7 @@ console.log('initializing handlers...');
 $('#add-employee-form').on('submit', addEmployee);
 
 //delete button handler
-//$('#employee-table').on('click', 'employee-delete-btn', 'delete');
+$('#employee-table').on('click', '.employee-delete-btn', deleteEmployee);
 
 //render dynamic elements in web page
 render();
@@ -23,7 +23,15 @@ let employees = [
     { firstName : 'Ernie', lastName : 'Pantusso', id : 13, title : 'Assistant bartender', annualSalary : 51000 },
     { firstName : 'Carla', lastName : 'Tortelli', id : 18, title : 'Server', annualSalary : 46800 }
 ];
+
+//sum orginal salary ammount
+let totalMonthlySalary = 0;
+for (let employee of employees) {
+    totalMonthlySalary += employee.annualSalary;
+}
+
 console.log('initialized Employees', employees);
+console.log('initialized total salary', totalMonthlySalary);
 
 
 //creates new employee object, adds it to the end of the array, then calls render
@@ -35,22 +43,38 @@ function addEmployee(evt) {
         lastName :  $('#lastNameInput').val(),
         id : $('#idInput').val(),
         title : $('#titleInput').val(),
-        annualSalary : $('#salaryInput').val()
+        annualSalary : Number($('#salaryInput').val())
     };
     employees.push(employee);
     console.log('employee added', employees);
+
+    //add new employee salary to total salary
+    totalMonthlySalary += employee.annualSalary;
+    
     render();
 }
 
-
+//finds employee index from html elements, 
+//removes employee from employees aray, and calls render()
 function deleteEmployee() {
+    console.log('deleting employee');
 
+    employeeIndex = $(this).parent().parent().index();
+
+    totalMonthlySalary -= employees[employeeIndex].annualSalary;
+
+    console.log('subtract salary',employees[employeeIndex].annualSalary);
+
+    employees.splice(employeeIndex, 1);
+
+    render();
 }
 
 //render function updates dynamic web page elements
 function render() {
 
     $('#employee-table').empty();
+    $('#total-monthly-salary').empty();
 
     for (let employee of employees) {
         $('#employee-table').append(
@@ -60,9 +84,14 @@ function render() {
                 <td>${employee.id}</td>
                 <td>${employee.title}</td>
                 <td>$${employee.annualSalary}</td>
+                <td><button class='employee-delete-btn'>Delete</button></td>
             </tr>`
         );
     }
+
+    $('#total-monthly-salary').append(
+        `<p>Total Montly: ${totalMonthlySalary}</p>`
+    );
 
     //empty field inputs
     $('#firstNameInput').val(''),
