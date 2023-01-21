@@ -1,0 +1,46 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+header {
+    text-align: center;
+    margin: 0px;
+    color: gainsboro;
+    background-color: grey;
+    padding-top: .5em;
+    padding-bottom: .25em;
+}
+
+table {
+    width: 50em;
+    height: 10em;
+}
+
+/*table, th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-weight: lighter;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+} */
+
+thead {
+    background-color: rgb(190, 190, 190);
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.total-monthly-salary-style {
+    text-align: left;
+    padding-left: 30em;
+}
+
+tfoot td { 
+    border: none;
+    background-color: rgb(205, 205, 205); 
+}
