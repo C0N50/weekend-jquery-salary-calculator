@@ -89,9 +89,17 @@ function render() {
         );
     }
 
-    $('#total-monthly-salary').append(
-        `<p>Total Montly: ${totalMonthlySalary}</p>`
-    );
+    if (totalMonthlySalary > 20000) {
+        $('#total-monthly-salary').append(
+            `<span style="background-color:red;"
+            >Total Montly: ${totalMonthlySalary}</span>`
+        );
+    }
+    else {
+        $('#total-monthly-salary').append(
+            `<p>Total Montly: ${totalMonthlySalary}</p>`
+        );
+    }
 
     //empty field inputs
     $('#firstNameInput').val(''),
