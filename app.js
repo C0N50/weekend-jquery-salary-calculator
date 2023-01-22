@@ -89,15 +89,35 @@ function render() {
         );
     }
 
+    //render total monthly salary
+    totalArray = totalMonthlySalary.toString().split("").reverse();
+    console.log(totalArray);
+
+    for (let power = 0; power < totalArray.length; power+=3 ) {
+        if (power > 0) {
+           // console.log (power);
+            console.log (totalArray[power]);
+            totalArray.splice([power],0,',');
+            console.log(totalArray);
+            power++;
+        }
+    }
+
+    let totalString = totalArray.reverse().join("");
+    console.log('total monthly salary is:', totalString);
+
+
+    //.join("")
+
     if (totalMonthlySalary > 20000) {
         $('#total-monthly-salary').append(
             `<span style="background-color:red;"
-            >Total Montly: ${totalMonthlySalary}</span>`
+            >Total Montly: $${totalString}</span>`
         );
     }
     else {
         $('#total-monthly-salary').append(
-            `<p>Total Montly: ${totalMonthlySalary}</p>`
+            `<p>Total Montly: $${totalString}</p>`
         );
     }
 
