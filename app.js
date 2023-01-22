@@ -4,16 +4,16 @@ $(document).ready(onReady);
 
 //set handlers
 function onReady() {
-console.log('initializing handlers...');
+    console.log('initializing handlers...');
 
-//form submit handler
-$('#add-employee-form').on('submit', addEmployee);
+    //form submit handler
+    $('#add-employee-form').on('submit', addEmployee);
 
-//delete button handler
-$('#employee-table').on('click', '.employee-delete-btn', deleteEmployee);
+    //delete button handler
+    $('#employee-table').on('click', '.employee-delete-btn', deleteEmployee);
 
-//render dynamic elements in web page
-render();
+    //render dynamic elements in web page
+    render();
 }
 
 //initialize global variables
@@ -21,9 +21,11 @@ let employees = [
     { firstName : 'Samuel', lastName : 'Malone' , id : 1, title : 'Owner/Bartender', annualSalary : 90000},
     { firstName : 'Diane', lastName : 'Chambers', id : 124, title : 'Server', annualSalary : 44600 },
     { firstName : 'Ernie', lastName : 'Pantusso', id : 13, title : 'Assistant bartender', annualSalary : 51000 },
-    { firstName : 'Carla', lastName : 'Tortelli', id : 18, title : 'Server', annualSalary : 46800 }
+    { firstName : 'Carla', lastName : 'Tortelli', id : 18, title : 'Server', annualSalary : 46800 },
+    { firstName : 'Frasier', lastName : 'Crane', id : 148, title : 'Psychiatrist', annualSalary : 19000 }
 ];
 
+ 
 //sum orginal salary ammount
 let totalMonthlySalary = 0;
 for (let employee of employees) {
@@ -70,12 +72,36 @@ function deleteEmployee() {
     render();
 }
 
+//adds thousands place commas to input number and returns number as string
+function thousandsCommas(number) {
+
+    numberArray = number.toString().split("").reverse();
+    console.log(numberArray);
+
+    //adds thousands place commas to number
+    for (let power = 0; power < numberArray.length; power+=3 ) {
+        if (power > 0) {
+           // console.log (power);
+            console.log (numberArray[power]);
+            numberArray.splice([power],0,',');
+            console.log(numberArray);
+            power++;
+        }
+    }
+
+    let numberString = numberArray.reverse().join("");
+    console.log('total monthly salary is:', numberString);
+    return numberString;
+}
+
 //render function updates dynamic web page elements
 function render() {
 
+    //empties data elements from html parents
     $('#employee-table').empty();
     $('#total-monthly-salary').empty();
 
+    //render employee elements
     for (let employee of employees) {
         $('#employee-table').append(
             `<tr>
@@ -83,32 +109,18 @@ function render() {
                 <td>${employee.lastName}</td>
                 <td>${employee.id}</td>
                 <td>${employee.title}</td>
-                <td>$${employee.annualSalary}</td>
+                <td>$${thousandsCommas(employee.annualSalary)}</td>
                 <td><button class='employee-delete-btn'>Delete</button></td>
             </tr>`
         );
     }
 
-    //render total monthly salary
-    totalArray = totalMonthlySalary.toString().split("").reverse();
-    console.log(totalArray);
-
-    for (let power = 0; power < totalArray.length; power+=3 ) {
-        if (power > 0) {
-           // console.log (power);
-            console.log (totalArray[power]);
-            totalArray.splice([power],0,',');
-            console.log(totalArray);
-            power++;
-        }
-    }
-
-    let totalString = totalArray.reverse().join("");
+    //apply thousands commas to total monthly salary
+    let totalString = thousandsCommas(totalMonthlySalary);
     console.log('total monthly salary is:', totalString);
 
 
-    //.join("")
-
+    //display red background if cost > $20,000
     if (totalMonthlySalary > 20000) {
         $('#total-monthly-salary').append(
             `<span style="background-color:red;"
@@ -128,3 +140,5 @@ function render() {
     $('#titleInput').val(''),
     $('#salaryInput').val('')
 }
+
+
