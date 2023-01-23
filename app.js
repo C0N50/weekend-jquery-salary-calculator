@@ -29,7 +29,8 @@ let employees = [
 //sum orginal salary ammount
 let totalMonthlySalary = 0;
 for (let employee of employees) {
-    totalMonthlySalary += employee.annualSalary;
+    totalMonthlySalary += Math.floor((employee.annualSalary /12));
+    console.log(totalMonthlySalary);    
 }
 
 console.log('initialized Employees', employees);
@@ -51,7 +52,7 @@ function addEmployee(evt) {
     console.log('employee added', employees);
 
     //add new employee salary to total salary
-    totalMonthlySalary += employee.annualSalary;
+    totalMonthlySalary += Math.floor((employee.annualSalary/ 12));
     
     render();
 }
@@ -63,7 +64,7 @@ function deleteEmployee() {
 
     employeeIndex = $(this).parent().parent().index();
 
-    totalMonthlySalary -= employees[employeeIndex].annualSalary;
+    totalMonthlySalary -= Math.floor((employees[employeeIndex].annualSalary /12));
 
     console.log('subtract salary',employees[employeeIndex].annualSalary);
 
